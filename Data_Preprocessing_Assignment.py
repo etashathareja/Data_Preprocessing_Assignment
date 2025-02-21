@@ -46,29 +46,12 @@ function2 = "BRCA_large_20783x40.gct"
 func_1_df = to_data_frame(function1, True)
 func_2_df = to_data_frame(function2)
 
-# Plots figure 1 as a separate figure. Histogram for "A7-A0DB-normal"
-plt.figure()
-df_2_plot1 = plt.hist(func_2_df["A7-A0DB-normal"], bins = 500)
-plt.xlim(0,50000)
-plt.title(f"Histogram of A7-A0DB-normal")
-
-# Plots figure 2 as a separate figure. Histogram for "A7-A13E-normal"
-plt.figure()
-df_2_plot2 = plt.hist(func_2_df["A7-A13E-normal"], bins = 500)
-plt.xlim(0,50000)
-plt.title(f"Histogram of A7-A13E-normal")
-
-# Plots figure 3 as a separate figure. Histogram for "BH-A0B3-primary"
-plt.figure()
-df_2_plot3 = plt.hist(func_2_df["BH-A0B3-primary"], bins = 500)
-plt.xlim(0,50000)
-plt.title(f"Histogram of BH-A0B3-primary")
-          
-# Plots figure 4 as a separate figure. Histogram for "BH-A0B5-primary"
-plt.figure()
-df_2_plot4 = plt.hist(func_2_df["BH-A0B5-primary"], bins = 500)
-plt.xlim(0,50000)
-plt.title(f"Histogram of BH-A0B5-primary")
+# Plots histograms with their respective titles
+for i in ["A7-A0DB-normal", "A7-A13E-normal", "BH-A0B3-primary", "BH-A0B5-primary"]:
+    plt.figure()
+    df_2_plot = plt.hist(func_2_df[i], bins = 500)
+    plt.xlim(0,50000)
+    plt.title(f"Histogram of {i}")
 
 # Turns the samples into rows.
 summary_df = func_2_df.describe().T 
@@ -91,27 +74,12 @@ filtered_median = filtered_df.median()
 print(f"Mean of each column after filtering: \n{filtered_mean}")
 print(f"Median of each column after filtering: \n{filtered_median}")
 
-#Plots the histograms on the same columns, with the new dataframe.
-plt.figure()
-df_2_plot5 = plt.hist(filtered_df["A7-A0DB-normal"], bins = 500)
-plt.xlim(0,50000)
-plt.title(f"Histogram of A7-A0DB-normal - transformed")
-
-plt.figure()
-df_2_plot6 = plt.hist(filtered_df["A7-A13E-normal"], bins = 500)
-plt.xlim(0,50000)
-plt.title(f"Histogram of A7-A13E-normal - transformed")
-
-plt.figure()
-df_2_plot7 = plt.hist(filtered_df["BH-A0B3-primary"], bins = 500)
-plt.xlim(0,50000)
-plt.title(f"Histogram of BH-A0B3-primary - transformed")
-
-plt.figure()
-df_2_plot8 = plt.hist(filtered_df["BH-A0B5-primary"], bins = 500)
-plt.xlim(0,50000)
-plt.title(f"Histogram of BH-A0B5-primary - transformed")
-
+# Plots histograms with their respective titles
+for i in ["A7-A0DB-normal", "A7-A13E-normal", "BH-A0B3-primary", "BH-A0B5-primary"]:
+    plt.figure()
+    df_2_plot = plt.hist(filtered_df[i], bins = 500)
+    plt.xlim(0,50000)
+    plt.title(f"Histogram of {i} - transformed")
 
 # In[ ]:
 
